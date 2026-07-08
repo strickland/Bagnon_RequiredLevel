@@ -1,7 +1,8 @@
 -- Using the Bagnon way to retrieve names, namespaces and stuff
-local MODULE, moduleData =  ...
-local Addon = _G[MODULE:match("[^_]+")]
-Bagnon:NewModule("RequiredLevel", Addon)
+local MODULE, moduleData = ...
+local Addon = _G.Bagnon or _G.Bagnonium
+if not Addon then return end
+Addon:NewModule("RequiredLevel", Addon)
 
 local Unfit = LibStub('Unfit-1.0')
 
@@ -712,7 +713,7 @@ end
 -- - Bagnon.ContainerItem is for retail. If I use Bagnon.Item instead,
 --   there are no UpdateCooldown and UpdateLocked functions to hook,
 --   which I need to keep my colour modifications of the icons.
-local item = Bagnon.ContainerItem
+local item = Addon.ContainerItem
 
 if item then
 
